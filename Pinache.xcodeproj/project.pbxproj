@@ -28,6 +28,7 @@
 		841EF6F71DAB63B1005C4D16 /* RoundBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundBtn.swift; sourceTree = "<group>"; };
 		841EF6F91DAB65AE005C4D16 /* FancyField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyField.swift; sourceTree = "<group>"; };
 		841EF6FB1DAB6727005C4D16 /* FancyButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyButton.swift; sourceTree = "<group>"; };
+		84A124141DAB7CA10036A299 /* Pinache.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Pinache.entitlements; sourceTree = "<group>"; };
 		84D46D031DAB4C5000D8E036 /* Pinache.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pinache.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84D46D061DAB4C5000D8E036 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84D46D081DAB4C5000D8E036 /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
@@ -89,6 +90,7 @@
 		84D46D051DAB4C5000D8E036 /* Pinache */ = {
 			isa = PBXGroup;
 			children = (
+				84A124141DAB7CA10036A299 /* Pinache.entitlements */,
 				841EF6F41DAB61A1005C4D16 /* Util */,
 				84D46D1C1DAB4FA900D8E036 /* Model */,
 				84D46D1B1DAB4FA300D8E036 /* View */,
@@ -175,6 +177,11 @@
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 23E573245P;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -393,7 +400,12 @@
 			baseConfigurationReference = A5D9F085865A3E7CF162A065 /* Pods-Pinache.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Pinache/Pinache.entitlements;
 				DEVELOPMENT_TEAM = 23E573245P;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Pinache/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -408,7 +420,12 @@
 			baseConfigurationReference = 4D4236A182107F4EA77781B0 /* Pods-Pinache.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Pinache/Pinache.entitlements;
 				DEVELOPMENT_TEAM = 23E573245P;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Pinache/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
