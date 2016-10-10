@@ -13,6 +13,7 @@
 		841EF6F81DAB63B1005C4D16 /* RoundBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841EF6F71DAB63B1005C4D16 /* RoundBtn.swift */; };
 		841EF6FA1DAB65AE005C4D16 /* FancyField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841EF6F91DAB65AE005C4D16 /* FancyField.swift */; };
 		841EF6FC1DAB6727005C4D16 /* FancyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841EF6FB1DAB6727005C4D16 /* FancyButton.swift */; };
+		8437B0111DAC195300585B47 /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8437B0101DAC195300585B47 /* FeedVC.swift */; };
 		84D46D071DAB4C5000D8E036 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D46D061DAB4C5000D8E036 /* AppDelegate.swift */; };
 		84D46D091DAB4C5000D8E036 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D46D081DAB4C5000D8E036 /* SignInVC.swift */; };
 		84D46D0C1DAB4C5100D8E036 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D46D0A1DAB4C5100D8E036 /* Main.storyboard */; };
@@ -28,6 +29,7 @@
 		841EF6F71DAB63B1005C4D16 /* RoundBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundBtn.swift; sourceTree = "<group>"; };
 		841EF6F91DAB65AE005C4D16 /* FancyField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyField.swift; sourceTree = "<group>"; };
 		841EF6FB1DAB6727005C4D16 /* FancyButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyButton.swift; sourceTree = "<group>"; };
+		8437B0101DAC195300585B47 /* FeedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
 		84A124141DAB7CA10036A299 /* Pinache.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Pinache.entitlements; sourceTree = "<group>"; };
 		84D46D031DAB4C5000D8E036 /* Pinache.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pinache.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84D46D061DAB4C5000D8E036 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				84D46D081DAB4C5000D8E036 /* SignInVC.swift */,
+				8437B0101DAC195300585B47 /* FeedVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 				84D46D091DAB4C5000D8E036 /* SignInVC.swift in Sources */,
 				841EF6F81DAB63B1005C4D16 /* RoundBtn.swift in Sources */,
 				841EF6FC1DAB6727005C4D16 /* FancyButton.swift in Sources */,
+				8437B0111DAC195300585B47 /* FeedVC.swift in Sources */,
 				84D46D071DAB4C5000D8E036 /* AppDelegate.swift in Sources */,
 				841EF6F31DAB60BD005C4D16 /* FancyView.swift in Sources */,
 				841EF6F61DAB61BE005C4D16 /* Constants.swift in Sources */,
