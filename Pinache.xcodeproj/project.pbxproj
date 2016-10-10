@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		68F80045CAF0C9D3F18C3EE5 /* Pods_Pinache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1C0EA5879B2C326FC15EB2B /* Pods_Pinache.framework */; };
+		841EF6F31DAB60BD005C4D16 /* FancyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841EF6F21DAB60BD005C4D16 /* FancyView.swift */; };
+		841EF6F61DAB61BE005C4D16 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841EF6F51DAB61BE005C4D16 /* Constants.swift */; };
+		841EF6F81DAB63B1005C4D16 /* RoundBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841EF6F71DAB63B1005C4D16 /* RoundBtn.swift */; };
+		841EF6FA1DAB65AE005C4D16 /* FancyField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841EF6F91DAB65AE005C4D16 /* FancyField.swift */; };
+		841EF6FC1DAB6727005C4D16 /* FancyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841EF6FB1DAB6727005C4D16 /* FancyButton.swift */; };
 		84D46D071DAB4C5000D8E036 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D46D061DAB4C5000D8E036 /* AppDelegate.swift */; };
 		84D46D091DAB4C5000D8E036 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D46D081DAB4C5000D8E036 /* SignInVC.swift */; };
 		84D46D0C1DAB4C5100D8E036 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D46D0A1DAB4C5100D8E036 /* Main.storyboard */; };
@@ -18,6 +23,11 @@
 
 /* Begin PBXFileReference section */
 		4D4236A182107F4EA77781B0 /* Pods-Pinache.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pinache.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pinache/Pods-Pinache.release.xcconfig"; sourceTree = "<group>"; };
+		841EF6F21DAB60BD005C4D16 /* FancyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyView.swift; sourceTree = "<group>"; };
+		841EF6F51DAB61BE005C4D16 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		841EF6F71DAB63B1005C4D16 /* RoundBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundBtn.swift; sourceTree = "<group>"; };
+		841EF6F91DAB65AE005C4D16 /* FancyField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyField.swift; sourceTree = "<group>"; };
+		841EF6FB1DAB6727005C4D16 /* FancyButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyButton.swift; sourceTree = "<group>"; };
 		84D46D031DAB4C5000D8E036 /* Pinache.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pinache.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84D46D061DAB4C5000D8E036 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84D46D081DAB4C5000D8E036 /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
@@ -50,6 +60,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		841EF6F41DAB61A1005C4D16 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				841EF6F51DAB61BE005C4D16 /* Constants.swift */,
+			);
+			name = Util;
+			sourceTree = "<group>";
+		};
 		84D46CFA1DAB4C5000D8E036 = {
 			isa = PBXGroup;
 			children = (
@@ -71,6 +89,7 @@
 		84D46D051DAB4C5000D8E036 /* Pinache */ = {
 			isa = PBXGroup;
 			children = (
+				841EF6F41DAB61A1005C4D16 /* Util */,
 				84D46D1C1DAB4FA900D8E036 /* Model */,
 				84D46D1B1DAB4FA300D8E036 /* View */,
 				84D46D1A1DAB4F9C00D8E036 /* Controller */,
@@ -95,6 +114,10 @@
 		84D46D1B1DAB4FA300D8E036 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				841EF6F21DAB60BD005C4D16 /* FancyView.swift */,
+				841EF6F71DAB63B1005C4D16 /* RoundBtn.swift */,
+				841EF6F91DAB65AE005C4D16 /* FancyField.swift */,
+				841EF6FB1DAB6727005C4D16 /* FancyButton.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -240,8 +263,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				841EF6FA1DAB65AE005C4D16 /* FancyField.swift in Sources */,
 				84D46D091DAB4C5000D8E036 /* SignInVC.swift in Sources */,
+				841EF6F81DAB63B1005C4D16 /* RoundBtn.swift in Sources */,
+				841EF6FC1DAB6727005C4D16 /* FancyButton.swift in Sources */,
 				84D46D071DAB4C5000D8E036 /* AppDelegate.swift in Sources */,
+				841EF6F31DAB60BD005C4D16 /* FancyView.swift in Sources */,
+				841EF6F61DAB61BE005C4D16 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,6 +395,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 23E573245P;
 				INFOPLIST_FILE = Pinache/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jettraines.Pinache;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -381,6 +410,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 23E573245P;
 				INFOPLIST_FILE = Pinache/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jettraines.Pinache;
 				PRODUCT_NAME = "$(TARGET_NAME)";
