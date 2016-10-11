@@ -50,12 +50,22 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        
         let post = posts[indexPath.row]
-        print("JETT: \(post.caption)")
         
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as? PostCell {
+            cell.configureCell(post: post)
+            return cell
+        }
+        return PostCell()
         
-        return tableView.dequeueReusableCell(withIdentifier: "PostCell") as! PostCell
-    }
+        // WORKING BIT
+//        let post = posts[indexPath.row]
+//        print("JETT: Hahaha here it is: \(post.caption)")
+//        
+//        return tableView.dequeueReusableCell(withIdentifier: "PostCell") as! PostCell
+    
+}
 
     @IBAction func signOutTapped(_ sender: AnyObject) {
         let keychainResult = KeychainWrapper.standard.removeObject(forKey: KEY_UID)

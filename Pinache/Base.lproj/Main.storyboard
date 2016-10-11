@@ -244,8 +244,7 @@
                                                                 </textView>
                                                             </subviews>
                                                         </stackView>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Oof-ke-nDa">
-                                                            <frame key="frameInset" minX="287" minY="315" width="56" height="21"/>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Oof-ke-nDa">
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Likes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xTp-4s-At6">
                                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
@@ -281,7 +280,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="caption" destination="hZj-Qg-skV" id="W7s-LE-RUN"/>
-                                            <outlet property="likesLbl" destination="xTp-4s-At6" id="weK-Eu-4VK"/>
+                                            <outlet property="likesLbl" destination="5LJ-Tc-oS3" id="swV-To-LGF"/>
                                             <outlet property="postImg" destination="Gcv-wG-tWi" id="hH5-Jz-YLb"/>
                                             <outlet property="profileImg" destination="wCy-WM-NOm" id="Sdo-ZZ-Z60"/>
                                             <outlet property="usernameLbl" destination="KW5-tm-ICC" id="twC-KU-4FX"/>

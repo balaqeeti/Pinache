@@ -16,11 +16,22 @@ class PostCell: UITableViewCell {
     @IBOutlet weak var caption: UITextView!
     @IBOutlet weak var likesLbl: UILabel!
     
+
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
+    
+    func configureCell(post: Post) {
+        
+        caption.text = post.caption
+        
+        likesLbl.text = "\(post.likes)"
+        
+    }
+    
+
 
     
 
