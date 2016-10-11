@@ -165,12 +165,16 @@
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6tK-8f-O8U">
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add-image" translatesAutoresizingMaskIntoConstraints="NO" id="P3U-77-Vwa">
+                                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add-image" translatesAutoresizingMaskIntoConstraints="NO" id="P3U-77-Vwa" customClass="CircleView" customModule="Pinache" customModuleProvider="target">
                                                 <color key="backgroundColor" red="0.0" green="0.51372549020000002" blue="0.56078431370000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="49" id="Fox-fx-EvL"/>
                                                     <constraint firstAttribute="width" constant="49" id="lnB-dG-7ca"/>
                                                 </constraints>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="1xX-Hu-FJG" appends="YES" id="m2H-Pb-biX"/>
+                                                </connections>
                                             </imageView>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Add a caption" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v6k-jJ-KnA" customClass="FancyField" customModule="Pinache" customModuleProvider="target">
                                                 <nil key="textColor"/>
@@ -304,6 +308,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="imageAdd" destination="P3U-77-Vwa" id="b07-n9-ZAi"/>
                         <outlet property="tableView" destination="VA4-yV-Bpl" id="dDn-qF-nUc"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="goToSignIn" id="JkK-P8-hH6"/>
                     </connections>
@@ -312,6 +317,11 @@
                 <tapGestureRecognizer id="ld6-vn-MBs">
                     <connections>
                         <action selector="signOutTapped:" destination="snL-P4-bgo" id="Gn9-M0-jsl"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="1xX-Hu-FJG">
+                    <connections>
+                        <action selector="addImageTapped:" destination="snL-P4-bgo" id="1Y0-8K-hPx"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
