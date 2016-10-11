@@ -17,6 +17,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     @IBOutlet weak var imageAdd: UIImageView!
     
    @IBOutlet weak var captionField: FancyField!
+
    
     
     var posts = [Post]()
