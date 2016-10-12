@@ -24,6 +24,7 @@
 		84D46D0E1DAB4C5100D8E036 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84D46D0D1DAB4C5100D8E036 /* Assets.xcassets */; };
 		84D46D111DAB4C5100D8E036 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D46D0F1DAB4C5100D8E036 /* LaunchScreen.storyboard */; };
 		84D46D191DAB4D2D00D8E036 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84D46D181DAB4D2D00D8E036 /* GoogleService-Info.plist */; };
+		84EFBDAF1DAEC8DB00D1BF1F /* ImageSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFBDAE1DAEC8DB00D1BF1F /* ImageSelector.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		84D46D101DAB4C5100D8E036 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84D46D121DAB4C5100D8E036 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84D46D181DAB4D2D00D8E036 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		84EFBDAE1DAEC8DB00D1BF1F /* ImageSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSelector.swift; sourceTree = "<group>"; };
 		A5D9F085865A3E7CF162A065 /* Pods-Pinache.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pinache.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pinache/Pods-Pinache.debug.xcconfig"; sourceTree = "<group>"; };
 		C1C0EA5879B2C326FC15EB2B /* Pods_Pinache.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pinache.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -142,6 +144,7 @@
 				841EF6FB1DAB6727005C4D16 /* FancyButton.swift */,
 				8437B0121DAC34A200585B47 /* CircleView.swift */,
 				8437B0141DAC3EF300585B47 /* PostCell.swift */,
+				84EFBDAE1DAEC8DB00D1BF1F /* ImageSelector.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 				84D46D071DAB4C5000D8E036 /* AppDelegate.swift in Sources */,
 				841EF6F31DAB60BD005C4D16 /* FancyView.swift in Sources */,
 				841EF6F61DAB61BE005C4D16 /* Constants.swift in Sources */,
+				84EFBDAF1DAEC8DB00D1BF1F /* ImageSelector.swift in Sources */,
 				8437B0151DAC3EF300585B47 /* PostCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

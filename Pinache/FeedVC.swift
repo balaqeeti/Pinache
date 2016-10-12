@@ -30,6 +30,9 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(SignInVC.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+        
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -55,6 +58,11 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         })
     }
 
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -116,6 +124,8 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
             return
         }
     
+        self.dismissKeyboard()
+        
         if let imgData = UIImageJPEGRepresentation(img, 0.2){
             
             let imgUid = NSUUID().uuidString
@@ -148,7 +158,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     
         captionField.text = ""
         imageSelected = false
-        imageAdd.image = UIImage(named: "add-image")
+        imageAdd.image = UIImage(named: "Camera-Photo")
         tableView.reloadData()
     }
     

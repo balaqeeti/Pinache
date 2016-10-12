@@ -23,7 +23,8 @@ class SignInVC: UIViewController {
         super.viewDidLoad()
         
         
-        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(SignInVC.dismissKeyboard))
+        view.addGestureRecognizer(tap)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -33,6 +34,10 @@ class SignInVC: UIViewController {
         }
     }
 
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
 
     @IBAction func facebookButtonTapped(_ sender: AnyObject) {
         
