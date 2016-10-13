@@ -19,6 +19,8 @@
 		8437B0151DAC3EF300585B47 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8437B0141DAC3EF300585B47 /* PostCell.swift */; };
 		8437B0181DAC504500585B47 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8437B0171DAC504500585B47 /* DataService.swift */; };
 		8437B01A1DAC649700585B47 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8437B0191DAC649700585B47 /* Post.swift */; };
+		84C504CC1DAF4DCD0097EBA3 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C504CB1DAF4DCD0097EBA3 /* ProfileVC.swift */; };
+		84C504D21DAF50F20097EBA3 /* FancyTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C504D11DAF50F20097EBA3 /* FancyTextView.swift */; };
 		84D46D071DAB4C5000D8E036 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D46D061DAB4C5000D8E036 /* AppDelegate.swift */; };
 		84D46D091DAB4C5000D8E036 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D46D081DAB4C5000D8E036 /* SignInVC.swift */; };
 		84D46D0C1DAB4C5100D8E036 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D46D0A1DAB4C5100D8E036 /* Main.storyboard */; };
@@ -42,6 +44,8 @@
 		8437B0171DAC504500585B47 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		8437B0191DAC649700585B47 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		84A124141DAB7CA10036A299 /* Pinache.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Pinache.entitlements; sourceTree = "<group>"; };
+		84C504CB1DAF4DCD0097EBA3 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		84C504D11DAF50F20097EBA3 /* FancyTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyTextView.swift; sourceTree = "<group>"; };
 		84D46D031DAB4C5000D8E036 /* Pinache.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pinache.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84D46D061DAB4C5000D8E036 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84D46D081DAB4C5000D8E036 /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
@@ -134,6 +138,7 @@
 			children = (
 				84D46D081DAB4C5000D8E036 /* SignInVC.swift */,
 				8437B0101DAC195300585B47 /* FeedVC.swift */,
+				84C504CB1DAF4DCD0097EBA3 /* ProfileVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -148,6 +153,7 @@
 				8437B0121DAC34A200585B47 /* CircleView.swift */,
 				8437B0141DAC3EF300585B47 /* PostCell.swift */,
 				84EFBDAE1DAEC8DB00D1BF1F /* ImageSelector.swift */,
+				84C504D11DAF50F20097EBA3 /* FancyTextView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -300,8 +306,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84C504D21DAF50F20097EBA3 /* FancyTextView.swift in Sources */,
 				8437B0131DAC34A200585B47 /* CircleView.swift in Sources */,
 				841EF6FA1DAB65AE005C4D16 /* FancyField.swift in Sources */,
+				84C504CC1DAF4DCD0097EBA3 /* ProfileVC.swift in Sources */,
 				84D46D091DAB4C5000D8E036 /* SignInVC.swift in Sources */,
 				8437B01A1DAC649700585B47 /* Post.swift in Sources */,
 				841EF6F81DAB63B1005C4D16 /* RoundBtn.swift in Sources */,

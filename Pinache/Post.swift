@@ -17,6 +17,7 @@ class Post {
     private var _postRef: FIRDatabaseReference!
     
     
+    
     var caption: String {
         return _caption
     }

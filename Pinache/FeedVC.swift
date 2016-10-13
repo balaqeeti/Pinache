@@ -16,10 +16,11 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     
     @IBOutlet weak var imageAdd: UIImageView!
     
-   @IBOutlet weak var captionField: FancyField!
+    @IBOutlet weak var captionField: FancyField!
 
-   
     
+   
+    var profile = ProfileVC()
     var posts = [Post]()
     var imagePicker: UIImagePickerController!
     static var imageCache: NSCache<NSString, UIImage> = NSCache()
@@ -123,6 +124,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
             print("JETT: An image must be selected")
             return
         }
+        
     
         self.dismissKeyboard()
         
@@ -169,6 +171,10 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         performSegue(withIdentifier: "goToSignIn", sender: nil)
     }
 
+    @IBAction func profilePressed(_ sender: AnyObject) {
+        performSegue(withIdentifier: "goToProfile", sender: nil)
+    }
+    
     /*
     // MARK: - Navigation
 

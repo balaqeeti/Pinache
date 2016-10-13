@@ -16,6 +16,7 @@ class SignInVC: UIViewController {
 
     @IBOutlet weak var emailField: FancyField!
     @IBOutlet weak var pwdField: FancyField!
+    var isFirstSignIn = true
     
     
     
@@ -94,6 +95,7 @@ class SignInVC: UIViewController {
                             if let user = user {
                                 let userData = ["provider": user.providerID]
                                 self.completeSignIn(id: user.uid, userData: userData)
+                                
                             }
                         }
                     })
@@ -107,8 +109,12 @@ class SignInVC: UIViewController {
         DataService.ds.createFirebaseDBUser(uid: id, userData: userData)
         let keychainResult = KeychainWrapper.standard.set(id, forKey: KEY_UID)
         print("JETT: Data Saved to Keychain \(keychainResult)")
-        performSegue(withIdentifier: "goToFeed", sender: nil)
-        
+        if self.isFirstSignIn {
+            performSegue(withIdentifier: "goToSetup", sender: nil)
+            self.isFirstSignIn = false
+        } else {
+            performSegue(withIdentifier: "goToFeed", sender: nil)
     }
 }
 
+}
