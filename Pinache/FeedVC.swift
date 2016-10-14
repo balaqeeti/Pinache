@@ -18,19 +18,21 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     
     @IBOutlet weak var captionField: FancyField!
 
+
     
    
-    var profile = ProfileVC()
     var posts = [Post]()
     var imagePicker: UIImagePickerController!
     static var imageCache: NSCache<NSString, UIImage> = NSCache()
     var imageSelected = false
-    
+    var fireUid: String!
+    var username: String!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print("JETT: \(fireUid)")
+
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(SignInVC.dismissKeyboard))
         view.addGestureRecognizer(tap)
         
@@ -152,7 +154,8 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         let post: Dictionary<String, Any> = [
             "caption": captionField.text!,
             "imageUrl": imgUrl,
-            "likes": 0
+            "likes": 0,
+            "username": username  //New Experiment
         ]
   
         let firebasePost = DataService.ds.REF_POSTS.childByAutoId()
@@ -172,9 +175,17 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     }
 
     @IBAction func profilePressed(_ sender: AnyObject) {
-        performSegue(withIdentifier: "goToProfile", sender: nil)
+        performSegue(withIdentifier: "goToProfile", sender: self.fireUid)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? ProfileVC {
+            if let fireUid = sender as? String {
+                destination.fireUid = fireUid
+            }
+        }
+        
+    }
     /*
     // MARK: - Navigation
 

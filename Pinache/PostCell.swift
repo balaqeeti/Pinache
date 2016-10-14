@@ -21,6 +21,8 @@ class PostCell: UITableViewCell {
     var post: Post!
     var likesRef: FIRDatabaseReference!
     
+    var profileInfo: ProfileVC!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -38,6 +40,8 @@ class PostCell: UITableViewCell {
         caption.text = post.caption
         
         likesLbl.text = "\(post.likes)"
+        
+  //      usernameLbl.text = post.username
         
         if img != nil {
             self.postImg.image = img

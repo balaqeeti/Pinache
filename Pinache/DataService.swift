@@ -22,6 +22,7 @@ class DataService {
     private var _REF_BASE = DB_BASE
     private var _REF_POSTS = DB_BASE.child("posts")
     private var _REF_USERS = DB_BASE.child("users")
+    private var _REF_USERNAMES = DB_BASE.child("usernames")
     
     //Storage Referenes
     private var _REF_POST_IMAGES = STORAGE_BASE.child("post-pics")
@@ -34,6 +35,9 @@ class DataService {
     }
     var REF_USERS: FIRDatabaseReference {
         return _REF_USERS
+    }
+    var REF_USERNAMES: FIRDatabaseReference {
+        return _REF_USERNAMES
     }
     
     var REF_USER_CURRENT: FIRDatabaseReference {
@@ -52,9 +56,11 @@ class DataService {
         
         REF_USERS.child(uid).updateChildValues(userData)
         
-        
     }
     
+    func createFirebaseDBUsername(userData: Dictionary<String,String>) {
+        _REF_USERNAMES.updateChildValues(userData)
+    }
     
     
     

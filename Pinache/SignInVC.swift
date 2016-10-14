@@ -17,12 +17,11 @@ class SignInVC: UIViewController {
     @IBOutlet weak var emailField: FancyField!
     @IBOutlet weak var pwdField: FancyField!
     var isFirstSignIn = true
-    
+
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(SignInVC.dismissKeyboard))
         view.addGestureRecognizer(tap)
@@ -68,6 +67,7 @@ class SignInVC: UIViewController {
                 if let user = user {
                     let userData = ["provider": credential.provider]
                     self.completeSignIn(id: user.uid, userData: userData)
+                    
                 }
             }
         })
@@ -83,8 +83,10 @@ class SignInVC: UIViewController {
                 if error == nil {
                     print("JETT: Email user authenticated with Firebase")
                     if let user = user {
+                        print("JETT: \(user.uid)")
                         let userData = ["provider": user.providerID]
                         self.completeSignIn(id: user.uid, userData: userData)
+
                     }
                 } else {
                     FIRAuth.auth()?.createUser(withEmail: email, password: pwd, completion: { (user, error) in
@@ -110,11 +112,26 @@ class SignInVC: UIViewController {
         let keychainResult = KeychainWrapper.standard.set(id, forKey: KEY_UID)
         print("JETT: Data Saved to Keychain \(keychainResult)")
         if self.isFirstSignIn {
-            performSegue(withIdentifier: "goToSetup", sender: nil)
+            performSegue(withIdentifier: "goToSetup", sender: id)
             self.isFirstSignIn = false
         } else {
-            performSegue(withIdentifier: "goToFeed", sender: nil)
+            performSegue(withIdentifier: "goToFeed", sender: id)
     }
 }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? ProfileVC {
+            if let fireUid = sender as? String {
+                destination.fireUid = fireUid
+            }
+        } else {
+            if let destination = segue.destination as? FeedVC {
+                if let fireUid = sender as? String {
+                    destination.fireUid = fireUid
+                }
+            }
+        }
+    }
 
 }
