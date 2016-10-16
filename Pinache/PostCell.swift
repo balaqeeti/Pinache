@@ -25,6 +25,10 @@ class PostCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
+        layer.borderColor = UIColor(red: SHADOW_GRAY, green: SHADOW_GRAY, blue: SHADOW_GRAY, alpha: 0.2).cgColor
+        layer.borderWidth = 3.0
+        
+        //
         let tap = UITapGestureRecognizer(target: self, action: #selector(likeTapped))
         tap.numberOfTapsRequired = 1
         likeImg.addGestureRecognizer(tap)

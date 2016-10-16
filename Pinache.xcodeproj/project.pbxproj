@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		68F80045CAF0C9D3F18C3EE5 /* Pods_Pinache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1C0EA5879B2C326FC15EB2B /* Pods_Pinache.framework */; };
+		84127FD91DB2B9900041FAF4 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84127FD81DB2B9900041FAF4 /* SettingsVC.swift */; };
 		841EF6F31DAB60BD005C4D16 /* FancyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841EF6F21DAB60BD005C4D16 /* FancyView.swift */; };
 		841EF6F61DAB61BE005C4D16 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841EF6F51DAB61BE005C4D16 /* Constants.swift */; };
 		841EF6F81DAB63B1005C4D16 /* RoundBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841EF6F71DAB63B1005C4D16 /* RoundBtn.swift */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		4D4236A182107F4EA77781B0 /* Pods-Pinache.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pinache.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pinache/Pods-Pinache.release.xcconfig"; sourceTree = "<group>"; };
+		84127FD81DB2B9900041FAF4 /* SettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		841EF6F21DAB60BD005C4D16 /* FancyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyView.swift; sourceTree = "<group>"; };
 		841EF6F51DAB61BE005C4D16 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		841EF6F71DAB63B1005C4D16 /* RoundBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundBtn.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 			children = (
 				84D46D081DAB4C5000D8E036 /* SignInVC.swift */,
 				8437B0101DAC195300585B47 /* FeedVC.swift */,
+				84127FD81DB2B9900041FAF4 /* SettingsVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				841EF6F61DAB61BE005C4D16 /* Constants.swift in Sources */,
 				84EFBDAF1DAEC8DB00D1BF1F /* ImageSelector.swift in Sources */,
 				8437B0151DAC3EF300585B47 /* PostCell.swift in Sources */,
+				84127FD91DB2B9900041FAF4 /* SettingsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,6 +12,8 @@ import SwiftKeychainWrapper
 
 class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+   
+    
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var imageAdd: UIImageView!
@@ -167,6 +169,9 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         print("JETT: \(keychainResult)")
         try! FIRAuth.auth()?.signOut()
         performSegue(withIdentifier: "goToSignIn", sender: nil)
+    }
+    @IBAction func settingsTapped(_ sender: AnyObject) {
+        performSegue(withIdentifier: "goToSettings", sender: nil)
     }
 
     /*
