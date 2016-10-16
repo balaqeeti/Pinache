@@ -318,6 +318,7 @@
                         <outlet property="quoteView" destination="6xT-ve-Dx8" id="voM-Ct-efT"/>
                         <outlet property="selectProfilePictureImage" destination="4H6-f8-n0a" id="bKW-x0-hu8"/>
                         <outlet property="selectProfilePictureLabel" destination="P0G-gH-FOf" id="GY7-yy-Zn9"/>
+                        <outlet property="updateProfileView" destination="Aeg-2q-79f" id="6KB-eV-pOV"/>
                         <outlet property="usernameIcon" destination="3WO-bN-mmL" id="civ-7m-N6j"/>
                         <outlet property="usernameTextField" destination="y7F-kt-2TU" id="xJr-qT-Ja1"/>
                     </connections>

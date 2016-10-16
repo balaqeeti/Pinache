@@ -20,6 +20,7 @@ class SettingsVC: UIViewController {
     
     @IBOutlet weak var bioTextField: UITextView!
     
+    @IBOutlet weak var updateProfileView: UIImageView!
 
     
     
@@ -42,7 +43,7 @@ class SettingsVC: UIViewController {
         usernameTextField.isHidden = false
         bioIcon.isHidden = false
         bioTextField.isHidden = false
-        
+        updateProfileView.isHidden = false
         
         selectProfilePictureImage.isHidden = true
         selectProfilePictureLabel.isHidden = true
@@ -66,6 +67,7 @@ class SettingsVC: UIViewController {
         usernameTextField.isHidden = false
         bioIcon.isHidden = false
         bioTextField.isHidden = false
+        updateProfileView.isHidden = false
         //
         selectProfilePictureImage.isHidden = true
         selectProfilePictureLabel.isHidden = true
@@ -79,6 +81,7 @@ class SettingsVC: UIViewController {
         usernameTextField.isHidden = true
         bioIcon.isHidden = true
         bioTextField.isHidden = true
+        updateProfileView.isHidden = true
         //
         selectProfilePictureImage.isHidden = false
         selectProfilePictureLabel.isHidden = false
@@ -92,6 +95,7 @@ class SettingsVC: UIViewController {
         usernameTextField.isHidden = true
         bioIcon.isHidden = true
         bioTextField.isHidden = true
+        updateProfileView.isHidden = true
         //
         selectProfilePictureImage.isHidden = true
         selectProfilePictureLabel.isHidden = true
