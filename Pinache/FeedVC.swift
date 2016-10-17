@@ -26,11 +26,22 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     var imagePicker: UIImagePickerController!
     static var imageCache: NSCache<NSString, UIImage> = NSCache()
     var imageSelected = false
+    var username: String!
+    var uid: String!
+    var profilePictureUrl: String!
+    
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
+        print("JETT: \(uid)")
+        print("JETT: \(username)")
+
+        
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(SignInVC.dismissKeyboard))
         view.addGestureRecognizer(tap)
@@ -41,6 +52,51 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         imagePicker = UIImagePickerController()
         imagePicker.allowsEditing = true
         imagePicker.delegate = self
+
+       
+        let _userRef = DataService.ds.REF_USER_CURRENT.child("username")
+        
+        _userRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            if let _ = snapshot.value as? NSNull {
+                self.username = "New User"
+                print("JETT: \(self.username) lolz")
+            } else {
+                self.username = snapshot.value as? String
+                print("JETT: \(self.username) sec")
+            }
+        })
+        
+        
+
+        
+        let _uidRef = DataService.ds.REF_USER_CURRENT.child("uid")
+        
+        _uidRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            if let _ = snapshot.value as? NSNull {
+                self.uid = "No UID"
+                print("JETT: \(self.uid) lolz")
+            } else {
+                self.uid = snapshot.value as? String
+                print("JETT: \(self.uid) sec")
+            }
+        })
+        
+        let _profilePictureRef = DataService.ds.REF_USER_CURRENT.child("profile-picture-url")
+        
+        _profilePictureRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            if let _ = snapshot.value as? NSNull {
+                self.profilePictureUrl = ""
+                print("JETT: Profile Picture not set")
+            } else {
+                self.profilePictureUrl = snapshot.value as? String
+                print("JETT: profile picture is set")
+            }
+        })
+
+        
+        
+        
+        
         
         DataService.ds.REF_POSTS.observe(.value, with: { (snapshot) in
             
@@ -125,6 +181,15 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
             print("JETT: An image must be selected")
             return
         }
+        
+        guard let userName = username, userName != "New User" else {
+            print("JETT: Username must be set")
+            return
+        }
+        guard let profilePictureUrl = profilePictureUrl, profilePictureUrl != "" else {
+            print("JETT: Please set your profile pic before posting!")
+            return
+        }
     
         self.dismissKeyboard()
         
@@ -152,7 +217,9 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         let post: Dictionary<String, Any> = [
             "caption": captionField.text!,
             "imageUrl": imgUrl,
-            "likes": 0
+            "likes": 0,
+            "username": self.username,
+            "profile-picture-url": self.profilePictureUrl
         ]
   
         let firebasePost = DataService.ds.REF_POSTS.childByAutoId()
@@ -171,17 +238,15 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         performSegue(withIdentifier: "goToSignIn", sender: nil)
     }
     @IBAction func settingsTapped(_ sender: AnyObject) {
-        performSegue(withIdentifier: "goToSettings", sender: nil)
+        performSegue(withIdentifier: "goToSettings", sender: uid)
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if let destination = segue.destination as? SettingsVC {
+            if let uid = sender as? String {
+                destination.uid = uid
+            }
+        }
     }
-    */
 
 }

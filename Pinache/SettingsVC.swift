@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import SwiftKeychainWrapper
+import Firebase
 
-class SettingsVC: UIViewController {
+class SettingsVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var publicView: UIImageView!
     
@@ -22,9 +24,7 @@ class SettingsVC: UIViewController {
     
     @IBOutlet weak var updateProfileView: UIImageView!
 
-    
-    
-    
+    @IBOutlet weak var updateProfilePicture: UIImageView!
     
     @IBOutlet weak var selectProfilePictureLabel: UILabel!
     @IBOutlet weak var selectProfilePictureImage: UIImageView!
@@ -33,7 +33,17 @@ class SettingsVC: UIViewController {
     
     @IBOutlet weak var jettImageView: UIImageView!
     
+    
+    
+    var imagePicker: UIImagePickerController!
+    var uid: String!
+    
     override func viewDidLoad() {
+        print("JETT \(uid)")
+        
+        imagePicker = UIImagePickerController()
+        imagePicker.allowsEditing = true
+        imagePicker.delegate = self
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(SignInVC.dismissKeyboard))
         view.addGestureRecognizer(tap)
@@ -47,6 +57,7 @@ class SettingsVC: UIViewController {
         
         selectProfilePictureImage.isHidden = true
         selectProfilePictureLabel.isHidden = true
+        updateProfilePicture.isHidden = true
         quoteView.isHidden = true
         jettImageView.isHidden = true
         // TODO: Hide other tabs
@@ -71,6 +82,7 @@ class SettingsVC: UIViewController {
         //
         selectProfilePictureImage.isHidden = true
         selectProfilePictureLabel.isHidden = true
+        updateProfilePicture.isHidden = true
         quoteView.isHidden = true
         jettImageView.isHidden = true
     }
@@ -85,6 +97,7 @@ class SettingsVC: UIViewController {
         //
         selectProfilePictureImage.isHidden = false
         selectProfilePictureLabel.isHidden = false
+        updateProfilePicture.isHidden = false
         quoteView.isHidden = true
         jettImageView.isHidden = true
     }
@@ -99,6 +112,7 @@ class SettingsVC: UIViewController {
         //
         selectProfilePictureImage.isHidden = true
         selectProfilePictureLabel.isHidden = true
+        updateProfilePicture.isHidden = true
         quoteView.isHidden = false
         jettImageView.isHidden = false
     }
@@ -107,18 +121,74 @@ class SettingsVC: UIViewController {
         performSegue(withIdentifier: "goToFeed", sender: nil)
     }
     @IBAction func updateProfilePressed(_ sender: AnyObject) {
-        performSegue(withIdentifier: "goToFeed", sender: nil)
+        if usernameTextField.text != "" {
+            let username = usernameTextField.text!
+            let userData = ["username" : username]
+            DataService.ds.createFirebaseDBUser(uid: uid, userData: userData)
+            performSegue(withIdentifier: "goToFeed", sender: nil)
+        } else {
+            performSegue(withIdentifier: "goToFeed", sender: nil)
+        }
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
+            selectProfilePictureImage.image = image
+           // imageSelected = true
+        } else {
+            print("JETT: A valid image wasn't selected" )
+        }
+        imagePicker.dismiss(animated: true, completion: nil)
     }
-    */
+    
+    @IBAction func updateProfileImagePressed(_ sender: AnyObject) {
+        
+        print("JETT: User is trying to upload profile picture")
+        present(imagePicker, animated: true, completion: nil)
+        
+
+    }
+    
+    @IBAction func updateProfilePicturePressed(_ sender: AnyObject) {
+        
+        // Experimental Method
+        if let img = selectProfilePictureImage.image {
+            if let imgData = UIImageJPEGRepresentation(img, 0.2){
+                
+                let imgUid = NSUUID().uuidString
+                let metadata = FIRStorageMetadata()
+                metadata.contentType = "image/jpeg"
+                DataService.ds.REF_PROFILE_IMAGES.child(imgUid).put(imgData, metadata: metadata) { (metadata, error) in
+                    if error != nil {
+                        print("JETT: Unable to upload image to Firebase storage")
+                    } else {
+                        print("JETT: Successfully uploaded image to firebase storage")
+                            let downloadURL = metadata?.downloadURL()?.absoluteString
+                                            if let url = downloadURL {
+                                                let userData = ["profile-picture-url" : url]
+                                                DataService.ds.createFirebaseDBUser(uid: self.uid, userData: userData)
+                                                self.performSegue(withIdentifier: "goToFeed", sender: url)
+                                                
+                                            }
+                    }
+                    
+                }
+            }
+            
+            
+        }
+
+        
+    }
+    
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if let destination = segue.destination as? FeedVC {
+//            if let url = sender as? String {
+//                destination.profilePictureUrl = url
+//            }
+//        }
+//    }
 
 }

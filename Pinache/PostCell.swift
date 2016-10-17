@@ -43,6 +43,14 @@ class PostCell: UITableViewCell {
         
         likesLbl.text = "\(post.likes)"
         
+        usernameLbl.text = post.username
+        
+        print("JETT: Image URL: \(post.profilePictureUrl)")
+
+        
+        
+        
+        
         if img != nil {
             self.postImg.image = img
         } else {
@@ -71,6 +79,43 @@ class PostCell: UITableViewCell {
                 self.likeImg.image = UIImage(named: "filled-heart")
             }
         })
+        
+        //Download the profile picture
+        
+            let profilePictureRef = FIRStorage.storage().reference(forURL: post.profilePictureUrl)
+            profilePictureRef.data(withMaxSize: 2 * 1024 * 1024, completion: { (data, error) in
+                if error != nil {
+                    print("JETT: Unable to download image from Firebase")
+                } else {
+                    print("JETT: Image downloaded from Firebase ")
+                    if let imageData = data {
+                        if let img = UIImage(data: imageData){
+                            self.profileImg.image = img
+                            FeedVC.imageCache.setObject(img, forKey: post.profilePictureUrl as NSString)
+                        }
+                    }
+                }
+                
+            })
+        
+
+        
+        
+//        let _userRef = DataService.ds.REF_USER_CURRENT.child("username")
+//        
+//        _userRef.observeSingleEvent(of: .value, with: { (snapshot) in
+//            if let _ = snapshot.value as? NSNull {
+//                self.usernameLbl.text = "New User"
+//                print("JETT: \(self.usernameLbl.text) lolz")
+//            } else {
+//                self.usernameLbl.text = snapshot.value as? String
+//                print("JETT: \(self.usernameLbl.text) sec")
+//            }
+//        })
+//        
+      
+        
+        
     }
     
     func likeTapped(sender: UITapGestureRecognizer) {

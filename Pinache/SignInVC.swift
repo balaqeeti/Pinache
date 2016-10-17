@@ -30,6 +30,7 @@ class SignInVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         if let _ = KeychainWrapper.standard.string(forKey: KEY_UID){
             print("JETT: ID found in Keychain")
+            print("JETT \(KEY_UID)")
             performSegue(withIdentifier: "goToFeed", sender: nil)
         }
     }
@@ -65,7 +66,8 @@ class SignInVC: UIViewController {
             } else {
                 print("JETT: Successfully Authenticated with Firebase")
                 if let user = user {
-                    let userData = ["provider": credential.provider]
+                    let userData = ["provider": credential.provider,
+                                    "uid": user.uid]
                     self.completeSignIn(id: user.uid, userData: userData)
                 }
             }
@@ -82,7 +84,8 @@ class SignInVC: UIViewController {
                 if error == nil {
                     print("JETT: Email user authenticated with Firebase")
                     if let user = user {
-                        let userData = ["provider": user.providerID]
+                        let userData = ["provider": user.providerID,
+                                        "uid": user.uid]
                         self.completeSignIn(id: user.uid, userData: userData)
                     }
                 } else {
@@ -92,7 +95,8 @@ class SignInVC: UIViewController {
                         } else {
                             print("JETT: Successfully Authenticated with Firebase")
                             if let user = user {
-                                let userData = ["provider": user.providerID]
+                                let userData = ["provider": user.providerID,
+                                                "uid": user.uid]
                                 self.completeSignIn(id: user.uid, userData: userData)
                             }
                         }
@@ -107,8 +111,23 @@ class SignInVC: UIViewController {
         DataService.ds.createFirebaseDBUser(uid: id, userData: userData)
         let keychainResult = KeychainWrapper.standard.set(id, forKey: KEY_UID)
         print("JETT: Data Saved to Keychain \(keychainResult)")
-        performSegue(withIdentifier: "goToFeed", sender: nil)
+        performSegue(withIdentifier: "goToFeed", sender: id)
         
     }
-}
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? FeedVC {
+            if let uid = sender as? String {
+                destination.uid = uid
+            }
+        } else {
+            if let destination = segue.destination as? SettingsVC {
+                if let uid = sender as? String {
+                    destination.uid = uid
+                }
+            }
+            
+        }
+    }
 
+}
