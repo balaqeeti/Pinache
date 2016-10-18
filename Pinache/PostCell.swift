@@ -87,7 +87,7 @@ class PostCell: UITableViewCell {
                 if error != nil {
                     print("JETT: Unable to download image from Firebase")
                 } else {
-                    print("JETT: Image downloaded from Firebase ")
+                    print("JETT: Image downloaded from Firebase pp")
                     if let imageData = data {
                         if let img = UIImage(data: imageData){
                             self.profileImg.image = img

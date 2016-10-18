@@ -404,8 +404,8 @@
                                     <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Log Out Button" translatesAutoresizingMaskIntoConstraints="NO" id="7Az-Dr-2ib">
                                         <gestureRecognizers/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="39" id="Wd3-cQ-cZK"/>
-                                            <constraint firstAttribute="height" constant="36" id="t8F-uu-TfY"/>
+                                            <constraint firstAttribute="width" constant="35" id="Wd3-cQ-cZK"/>
+                                            <constraint firstAttribute="height" constant="25" id="t8F-uu-TfY"/>
                                         </constraints>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="ld6-vn-MBs" appends="YES" id="ANf-d3-N5n"/>
@@ -414,8 +414,8 @@
                                     <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wrench" translatesAutoresizingMaskIntoConstraints="NO" id="3qd-hL-zl6">
                                         <gestureRecognizers/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="45" id="iFF-JO-6vr"/>
-                                            <constraint firstAttribute="height" constant="35" id="zos-I7-ELX"/>
+                                            <constraint firstAttribute="width" constant="35" id="iFF-JO-6vr"/>
+                                            <constraint firstAttribute="height" constant="25" id="zos-I7-ELX"/>
                                         </constraints>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="tRz-zG-tuw" appends="YES" id="TB7-Lb-8VJ"/>
@@ -437,7 +437,7 @@
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6tK-8f-O8U">
                                         <subviews>
-                                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Camera-Photo" translatesAutoresizingMaskIntoConstraints="NO" id="P3U-77-Vwa" customClass="ImageSelector" customModule="Pinache" customModuleProvider="target">
+                                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Camera" translatesAutoresizingMaskIntoConstraints="NO" id="P3U-77-Vwa" customClass="ImageSelector" customModule="Pinache" customModuleProvider="target">
                                                 <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="49" id="Fox-fx-EvL"/>
@@ -668,7 +668,7 @@
     </scenes>
     <resources>
         <image name="About Us" width="116" height="26"/>
-        <image name="Camera-Photo" width="49" height="49"/>
+        <image name="Camera" width="49" height="49"/>
         <image name="Feed Icon" width="40" height="45"/>
         <image name="Icon" width="137" height="134"/>
         <image name="Image-1" width="98" height="25"/>
