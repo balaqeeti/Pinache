@@ -77,6 +77,18 @@ class SettingsVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
                 print("JETT: \(self.usernameTextField.text) sec")
             }
         })
+        
+        // Download existing bios to appear as placeholder
+        
+        let bioref = DataService.ds.REF_USER_CURRENT.child("biodata")
+        bioref.observeSingleEvent(of: .value, with: { (snapshot) in
+            if let _ = snapshot.value as? NSNull {
+                print("JETT: No bio data to show!")
+            } else {
+                self.bioTextField.text = snapshot.value as? String
+                print("JETT: \(self.bioTextField.text)")
+            }
+        })
         super.viewDidLoad()
 
         // Check if a profile picture is in Firebase
@@ -123,6 +135,8 @@ class SettingsVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
             
         })
     }
+        
+        
     }
     
     func dismissKeyboard() {
@@ -182,13 +196,14 @@ class SettingsVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
     @IBAction func updateProfilePressed(_ sender: AnyObject) {
         if usernameTextField.text != "" {
             let username = usernameTextField.text!
-            let userData = ["username" : username]
+            let biodata = bioTextField.text!
+            let userData = ["username" : username,
+                            "biodata" : biodata]
             DataService.ds.createFirebaseDBUser(uid: uid, userData: userData)
             performSegue(withIdentifier: "goToFeed", sender: nil)
         } else {
             performSegue(withIdentifier: "goToFeed", sender: nil)
         }
-        
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -224,13 +239,13 @@ class SettingsVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
                         print("JETT: Unable to upload image to Firebase storage")
                     } else {
                         print("JETT: Successfully uploaded image to firebase storage")
-                            let downloadURL = metadata?.downloadURL()?.absoluteString
-                                            if let url = downloadURL {
-                                                let userData = ["profile-picture-url" : url]
-                                                DataService.ds.createFirebaseDBUser(uid: self.uid, userData: userData)
-                                                self.performSegue(withIdentifier: "goToFeed", sender: url)
-                                                
-                                            }
+                        let downloadURL = metadata?.downloadURL()?.absoluteString
+                        if let url = downloadURL {
+                            let userData = ["profile-picture-url" : url]
+                            DataService.ds.createFirebaseDBUser(uid: self.uid, userData: userData)
+                            self.performSegue(withIdentifier: "goToFeed", sender: url)
+                            
+                        }
                     }
                     
                 }
@@ -238,7 +253,7 @@ class SettingsVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
             
             
         }
-
+        
         
     }
     
