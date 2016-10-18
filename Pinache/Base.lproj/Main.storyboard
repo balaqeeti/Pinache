@@ -255,7 +255,7 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AOC-yx-0lT">
-                                        <frame key="frameInset" minX="255" height="128"/>
+                                        <frame key="frameInset" minX="255" height="1000"/>
                                     </imageView>
                                 </subviews>
                                 <constraints>
@@ -695,6 +695,6 @@
         <image name="profile" width="113" height="155"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ajI-OM-mNF"/>
+        <segue reference="eCv-IG-CDW"/>
     </inferredMetricsTieBreakers>
 </document>

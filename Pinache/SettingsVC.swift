@@ -37,6 +37,8 @@ class SettingsVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
     
     var imagePicker: UIImagePickerController!
     var uid: String!
+    var profilePictureUrl: String!
+    var profilePictureIsAvailableForDownload: Bool!
     
     override func viewDidLoad() {
         print("JETT \(uid)")
@@ -60,10 +62,65 @@ class SettingsVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
         updateProfilePicture.isHidden = true
         quoteView.isHidden = true
         jettImageView.isHidden = true
-        // TODO: Hide other tabs
+        
+        
+        // Show existing username in the username text field
+        let _userRef = DataService.ds.REF_USER_CURRENT.child("username")
+        
+        _userRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            if let _ = snapshot.value as? NSNull {
+                print("JETT: Displaying placeholder text")
+            } else {
+               self.usernameTextField.text = snapshot.value as? String
+                print("JETT: \(self.usernameTextField.text) sec")
+            }
+        })
         super.viewDidLoad()
 
+        // Check if a profile picture is in Firebase
+
+        let _profilePictureRef = DataService.ds.REF_USER_CURRENT.child("profile-picture-url")
+        
+        _profilePictureRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            if let _ = snapshot.value as? NSNull {
+                // self.profilePictureUrl = ""
+                print("JETT: Profile Picture not available")
+                self.profilePictureIsAvailableForDownload = false
+                
+            } else {
+                self.profilePictureUrl = snapshot.value as? String
+                print("JETT: profile picture is available")
+                self.profilePictureIsAvailableForDownload = true
+            }
+        })
+
+        
+        
+        
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        // Download existing profile picture to appear in placeholder image
+        
+        if profilePictureIsAvailableForDownload! {
+        let profilePictureRef = FIRStorage.storage().reference(forURL: self.profilePictureUrl)
+        profilePictureRef.data(withMaxSize: 2 * 1024 * 1024, completion: { (data, error) in
+            if error != nil {
+                print("JETT: Unable to download image from Firebase")
+            } else {
+                print("JETT: Image downloaded from Firebase ")
+                if let imageData = data {
+                    if let img = UIImage(data: imageData){
+                        self.selectProfilePictureImage.image = img
+                        FeedVC.imageCache.setObject(img, forKey: self.profilePictureUrl as NSString)
+                    }
+                }
+            }
+            
+        })
+    }
     }
     
     func dismissKeyboard() {
