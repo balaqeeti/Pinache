@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11521.1" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11521.1" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11517.1"/>
@@ -226,8 +226,8 @@
                                             <constraint firstAttribute="height" constant="30" id="KAZ-2x-35o"/>
                                             <constraint firstAttribute="width" constant="225" id="nkE-rL-fWd"/>
                                         </constraints>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="0.63137254899999995" green="0.90196078430000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
@@ -244,8 +244,7 @@
                                             <constraint firstAttribute="height" constant="24" id="MGQ-L6-4Rn"/>
                                         </constraints>
                                     </imageView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="YIH-xD-AkN">
-                                        <frame key="frameInset" minX="30" width="219" height="115"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="YIH-xD-AkN">
                                         <color key="backgroundColor" red="0.47058823529999999" green="0.56470588239999997" blue="0.61176470589999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="225" id="LjV-fa-QNa"/>
@@ -254,13 +253,10 @@
                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AOC-yx-0lT">
-                                        <frame key="frameInset" minX="255" height="1000"/>
-                                    </imageView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="255" id="cN4-jd-StZ"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="115" id="q1v-Lz-wQY"/>
+                                    <constraint firstAttribute="height" constant="115" id="q1v-Lz-wQY"/>
                                 </constraints>
                             </stackView>
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Update Profile" translatesAutoresizingMaskIntoConstraints="NO" id="Aeg-2q-79f">
@@ -695,6 +691,6 @@
         <image name="profile" width="113" height="155"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="eCv-IG-CDW"/>
+        <segue reference="ajI-OM-mNF"/>
     </inferredMetricsTieBreakers>
 </document>

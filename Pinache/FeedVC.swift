@@ -59,7 +59,14 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         _userRef.observeSingleEvent(of: .value, with: { (snapshot) in
             if let _ = snapshot.value as? NSNull {
                 self.username = "New User"
-                print("JETT: \(self.username) lolz")
+                print("JETT: \(self.username), need to setup profile")
+                // Present alert to setup profile, segue to SettingsVC
+                let alert = UIAlertController(title: "Oops!",
+                                              message: "Looks like you need to set up your profile first!",
+                                              preferredStyle: .alert)
+                let action = UIAlertAction(title: "Update Profile & Image!", style: .default, handler: { action in self.performSegue(withIdentifier: "goToSettings", sender: self.uid)})
+                alert.addAction(action)
+                self.present(alert, animated: true, completion: nil)
             } else {
                 self.username = snapshot.value as? String
                 print("JETT: \(self.username) sec")
@@ -87,6 +94,16 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
             if let _ = snapshot.value as? NSNull {
                 self.profilePictureUrl = ""
                 print("JETT: Profile Picture not set")
+                // Present Alert to set up profile and segue to SettingsVC
+                let alert = UIAlertController(title: "Oops!",
+                                              message: "Looks like you need to set up your profile first!",
+                                              preferredStyle: .alert)
+                let action = UIAlertAction(title: "Update Profile & Image!", style: .default, handler: { action in self.performSegue(withIdentifier: "goToSettings", sender: self.uid)})
+                
+//                alert.addAction(UIAlertAction(title:"OK", style: .Default, handler:  { action in self.performSegueWithIdentifier("mySegueIdentifier", sender: self) }
+
+                alert.addAction(action)
+                self.present(alert, animated: true, completion: nil)
             } else {
                 self.profilePictureUrl = snapshot.value as? String
                 print("JETT: profile picture is set")

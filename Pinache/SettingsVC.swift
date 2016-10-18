@@ -27,7 +27,7 @@ class SettingsVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
     @IBOutlet weak var updateProfilePicture: UIImageView!
     
     @IBOutlet weak var selectProfilePictureLabel: UILabel!
-    @IBOutlet weak var selectProfilePictureImage: UIImageView!
+    @IBOutlet weak var selectProfilePictureImage: CircleView!
     
     @IBOutlet weak var quoteView: UIImageView!
     
@@ -38,7 +38,9 @@ class SettingsVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
     var imagePicker: UIImagePickerController!
     var uid: String!
     var profilePictureUrl: String!
+    
     var profilePictureIsAvailableForDownload: Bool!
+    var isInMiddleOfSelecting = false
     
     override func viewDidLoad() {
         print("JETT \(uid)")
@@ -104,7 +106,7 @@ class SettingsVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
         
         // Download existing profile picture to appear in placeholder image
         
-        if profilePictureIsAvailableForDownload! {
+        if profilePictureIsAvailableForDownload! && !isInMiddleOfSelecting {
         let profilePictureRef = FIRStorage.storage().reference(forURL: self.profilePictureUrl)
         profilePictureRef.data(withMaxSize: 2 * 1024 * 1024, completion: { (data, error) in
             if error != nil {
@@ -200,7 +202,7 @@ class SettingsVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
     }
     
     @IBAction func updateProfileImagePressed(_ sender: AnyObject) {
-        
+        self.isInMiddleOfSelecting = true
         print("JETT: User is trying to upload profile picture")
         present(imagePicker, animated: true, completion: nil)
         
@@ -210,6 +212,7 @@ class SettingsVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
     @IBAction func updateProfilePicturePressed(_ sender: AnyObject) {
         
         // Experimental Method
+        self.isInMiddleOfSelecting = false
         if let img = selectProfilePictureImage.image {
             if let imgData = UIImageJPEGRepresentation(img, 0.2){
                 
