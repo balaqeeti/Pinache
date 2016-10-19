@@ -193,15 +193,39 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     
     
     @IBAction func postBtnTapped(_ sender: AnyObject) {
+        
+        guard let img = imageAdd.image, imageSelected == true else {
+            
+            let alert = UIAlertController(title: "Oops!",
+                                          message: "Please, add a photo!",
+                                          preferredStyle: .alert)
+            
+            let action = UIAlertAction(title: "Close", style: .cancel)
+            
+            
+            alert.addAction(action)
+            
+            self.present(alert, animated: true, completion: nil)
+            
+            print("JETT: An image must be selected")
+            return
+        }
+        
         guard let caption = captionField.text, caption != "" else {
+            let alert = UIAlertController(title: "Oops!",
+                                          message: "Please, add a caption!",
+                                          preferredStyle: .alert)
+            
+            let action = UIAlertAction(title: "Close", style: .cancel)
+            
+            alert.addAction(action)
+            
+            self.present(alert, animated: true, completion: nil)
+            
             print("JETT: Caption must be entered")
             return
         }
         
-        guard let img = imageAdd.image, imageSelected == true else {
-            print("JETT: An image must be selected")
-            return
-        }
         
         guard let userName = username, userName != "New User" else {
             print("JETT: Username must be set")
