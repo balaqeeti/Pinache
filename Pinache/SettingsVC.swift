@@ -200,6 +200,7 @@ class SettingsVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
             let userData = ["username" : username,
                             "biodata" : biodata]
             DataService.ds.createFirebaseDBUser(uid: uid, userData: userData)
+            DataService.ds.createFirebaseDBUsername(uid: uid, userData: username)
             performSegue(withIdentifier: "goToFeed", sender: nil)
         } else {
             performSegue(withIdentifier: "goToFeed", sender: nil)

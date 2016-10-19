@@ -29,6 +29,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     var username: String!
     var uid: String!
     var profilePictureUrl: String!
+
     
     
     
@@ -37,7 +38,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         super.viewDidLoad()
         
         
-        
+
         print("JETT: \(uid)")
         print("JETT: \(username)")
 
@@ -48,6 +49,9 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         
         tableView.delegate = self
         tableView.dataSource = self
+        // Experimental
+
+        
         
         imagePicker = UIImagePickerController()
         imagePicker.allowsEditing = true
@@ -258,12 +262,39 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         performSegue(withIdentifier: "goToSettings", sender: uid)
     }
 
+    
+    // Trying to Pop up to segue
+    func usernameTapped() {
+        print("JETT: Protocol is working")
+        let alert = UIAlertController(title: "Oops!",
+                                      message: "Looks like you need to set up your profile first!",
+                                      preferredStyle: .alert)
+        let action = UIAlertAction(title: "Update Profile & Image!", style: .default, handler: { action in self.performSegue(withIdentifier: "goToSettings", sender: self.uid)})
+        
+        
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
+        
+    }
+    
+    
+    
+    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? SettingsVC {
             if let uid = sender as? String {
                 destination.uid = uid
             }
+        } else {
+            if let destination = segue.destination as? ProfileVC {
+                if let uid = sender as? String {
+                    destination.uid = uid
+                }
+            }
         }
     }
-
+    
 }
+
+

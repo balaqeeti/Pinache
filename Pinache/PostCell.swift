@@ -9,10 +9,13 @@
 import UIKit
 import Firebase
 
+
+
 class PostCell: UITableViewCell {
 
+    
     @IBOutlet weak var profileImg: UIImageView!
-    @IBOutlet weak var usernameLbl: UILabel!
+    @IBOutlet weak var usernameLblDisplay: UIButton!
     @IBOutlet weak var postImg: UIImageView!
     @IBOutlet weak var caption: UITextView!
     @IBOutlet weak var likesLbl: UILabel!
@@ -20,6 +23,8 @@ class PostCell: UITableViewCell {
     
     var post: Post!
     var likesRef: FIRDatabaseReference!
+    var goToProfileUid: String!
+    //var usernameRef: FIRDatabaseReference!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,11 +33,18 @@ class PostCell: UITableViewCell {
         layer.borderColor = UIColor(red: SHADOW_GRAY, green: SHADOW_GRAY, blue: SHADOW_GRAY, alpha: 0.2).cgColor
         layer.borderWidth = 3.0
         
-        //
+        // Like Gesture Recognizer
         let tap = UITapGestureRecognizer(target: self, action: #selector(likeTapped))
         tap.numberOfTapsRequired = 1
         likeImg.addGestureRecognizer(tap)
         likeImg.isUserInteractionEnabled = true
+        // Username Tap Gesture Recognizer
+       
+//        let usernameTap = UITapGestureRecognizer(target: self, action: #selector(usernameTapped))
+//        usernameTap.numberOfTapsRequired = 1
+//        usernameLbl.addGestureRecognizer(usernameTap)
+//        usernameLbl.isUserInteractionEnabled = true
+        
     }
     
     func configureCell(post: Post, img: UIImage? = nil) {
@@ -43,7 +55,7 @@ class PostCell: UITableViewCell {
         
         likesLbl.text = "\(post.likes)"
         
-        usernameLbl.text = post.username
+        usernameLblDisplay.setTitle(post.username, for: .normal)
         
         print("JETT: Image URL: \(post.profilePictureUrl)")
 
@@ -103,15 +115,15 @@ class PostCell: UITableViewCell {
         
 //        let _userRef = DataService.ds.REF_USER_CURRENT.child("username")
 //        
-//        _userRef.observeSingleEvent(of: .value, with: { (snapshot) in
-//            if let _ = snapshot.value as? NSNull {
-//                self.usernameLbl.text = "New User"
-//                print("JETT: \(self.usernameLbl.text) lolz")
-//            } else {
-//                self.usernameLbl.text = snapshot.value as? String
-//                print("JETT: \(self.usernameLbl.text) sec")
-//            }
-//        })
+////        _userRef.observeSingleEvent(of: .value, with: { (snapshot) in
+////            if let _ = snapshot.value as? NSNull {
+////                self.usernameLbl.text = "New User"
+////                print("JETT: \(self.usernameLbl.text) lolz")
+////            } else {
+////                self.usernameLbl.text = snapshot.value as? String
+////                print("JETT: \(self.usernameLbl.text) sec")
+////            }
+////        })
 //        
       
         
@@ -132,5 +144,42 @@ class PostCell: UITableViewCell {
         })
     }
     
+    @IBAction func usernameTapped(_ sender: AnyObject) {
+        let usernameLookupKey = usernameLblDisplay.currentTitle!
+        print("JETT: here is the lookup key \(usernameLookupKey)")
+        let usernameRef = DataService.ds.REF_USERNAMES.child("\(usernameLookupKey)")
+        
+        usernameRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            if let _ = snapshot.value as? NSNull {
+                print("JETT: How are you accessing this??")
+            } else {
+                print("JETT: Got the UID!: \(snapshot.value)")
+                let goToProfileUid = snapshot.value! as! String
+                // Segue from story board
+                DataService.ds.createFirebaseDBUserToView(uid: goToProfileUid)
+                print("JETT: UID: \(goToProfileUid) Name: \(usernameLookupKey)")
+                
+                
+            }
+        })
+    }
+    
+    
+//    func usernameTapped(sender: UITapGestureRecognizer) {
+//        let usernameLookupKey = usernameLblDisplay.currentTitle
+//        print("JETT: here is the lookup key \(usernameLookupKey)")
+//        let usernameRef = DataService.ds.REF_USERNAMES.child("\(usernameLookupKey)")
+//        
+//        usernameRef.observeSingleEvent(of: .value, with: { (snapshot) in
+//            if let _ = snapshot.value as? NSNull {
+//                print("JETT: How are you accessing this??")
+//            } else {
+//                print("JETT: Got the UID!: \(snapshot.value)")
+//                self.goToProfileUid = snapshot.value! as! String
+//        
+//            }
+//        })
+//
+//    }
 
 }
